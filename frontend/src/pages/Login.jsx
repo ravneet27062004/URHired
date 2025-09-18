@@ -8,7 +8,12 @@ import { useAuth } from "../context/AuthContext";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+
 import { auth, provider, signInWithPopup, signOut } from "../firebase";
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,15 +41,18 @@ const Login = () => {
         };
 
         login(user, userType);
-
+        
         // Redirect to the appropriate dashboard
         if (userType === "recruiter") {
+          toast.success("login successful");
           navigate("/recruiter/dashboard");
         } else {
+          toast.success("login successful");
           navigate("/user/dashboard");
         }
       }, 1500);
     } catch (err) {
+      toast.error("something went wrong,please try again");
       setError("Failed to log in. Please check your credentials.");
       setLoading(false);
     }
@@ -211,6 +219,7 @@ const handleGoogleSignIn = async () => {
                 </a>
               </div>
             </div>
+
             <Button
               type="submit"
               variant="primary"
@@ -220,7 +229,7 @@ const handleGoogleSignIn = async () => {
             >
               {loading ? "Signing in..." : "Sign In"}
             </Button>
-            <p className="text-black text-sm" style={{textAlign: "center"}}>OR</p>
+            <p className="text-black ml-46" >OR</p>
 <button
   type="button"
   onClick={handleGoogleSignIn}
@@ -233,7 +242,6 @@ const handleGoogleSignIn = async () => {
   />
   <span className="text-gray-700">Sign in with Google</span>
 </button>
-            
 
             <p className="text-center text-sm text-gray-600">
               Don't have an account?{" "}

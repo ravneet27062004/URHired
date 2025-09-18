@@ -9,6 +9,8 @@ import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 // import { FiEye, FiEyeOff } from "react-icons/fi";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -49,12 +51,15 @@ const Register = () => {
 
         // Redirect to the appropriate dashboard
         if (userType === "recruiter") {
+          toast.success("registered successfully");
           navigate("/recruiter/dashboard");
         } else {
+          toast.success("registered successfully");
           navigate("/user/dashboard");
         }
       }, 1500);
     } catch (err) {
+      toast.error("something went wrong,please try again");
       setError("Failed to create an account. Please try again.");
       setLoading(false);
     }
@@ -224,6 +229,7 @@ const Register = () => {
             >
               {loading ? "Creating Account..." : "Create Account"}
             </Button>
+
             <p className="text-center text-sm text-gray-600">
               Already have an account?{" "}
               <Link
