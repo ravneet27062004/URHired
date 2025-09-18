@@ -24,7 +24,7 @@ const Navbar = () => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                    scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
+                    scrolled ? 'backdrop-blur-md shadow-lg' : 'bg-transparent'
                 }`}
             >
                 <div className="container mx-auto px-6 py-4">
@@ -36,7 +36,7 @@ const Navbar = () => {
                             >
                                 <span className="text-white font-bold text-xl">Hi</span>
                             </motion.div>
-                            <span className={`font-bold text-xl ${scrolled ? 'text-gray-800' : 'text-white'}`}>
+                            <span className={`font-bold text-xl  text-white`}>
                                 U R Hired
                             </span>
                         </Link>
@@ -115,9 +115,9 @@ const Navbar = () => {
 const NavLink = ({ href, children, scrolled }) => (
     <a
         href={href}
-        className={`block font-medium hover:text-purple-500 transition-colors ${
-            scrolled ? 'text-gray-800' : 'text-white'
-        }`}
+        className={`block font-medium hover:text-purple-500 transition-colors 
+            text-white
+        `}
     >
         {children}
     </a>
